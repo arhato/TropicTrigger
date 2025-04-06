@@ -5,7 +5,8 @@ public class GameOverMenu : MonoBehaviour
 {
     public GameObject overMenu; 
     public float fallThreshold = -10f; 
-    public GameObject player; 
+    public GameObject player;
+    public GameObject infoHUD;
     void Start()
     {
         overMenu.SetActive(false);
@@ -15,6 +16,7 @@ public class GameOverMenu : MonoBehaviour
     {
         if (player.transform.position.y < fallThreshold)
         {
+            infoHUD.SetActive(false);
             ShowOverMenu();
         }
     }
