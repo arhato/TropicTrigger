@@ -10,11 +10,11 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     bool isFacingRight = true;
     
-    public Transform leftFoot;
-    public Transform rightFoot;
-    
-    public float groundCheckDistance = 0.1f;
-    public LayerMask groundLayer;
+    // public Transform leftFoot;
+    // public Transform rightFoot;
+    //
+    // public float groundCheckDistance = 0.1f;
+    // public LayerMask groundLayer;
     
     Animator animator;
     

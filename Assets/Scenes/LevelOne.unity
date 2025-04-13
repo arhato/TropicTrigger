@@ -3290,6 +3290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 811185087}
   - component: {fileID: 811185085}
+  - component: {fileID: 811185094}
   - component: {fileID: 811185088}
   - component: {fileID: 811185089}
   - component: {fileID: 811185090}
@@ -3317,12 +3318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   jumpForce: 15
-  leftFoot: {fileID: 628969710}
-  rightFoot: {fileID: 1977025405}
-  groundCheckDistance: 0.1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!4 &811185087
 Transform:
   m_ObjectHideFlags: 0
@@ -3338,6 +3333,7 @@ Transform:
   m_Children:
   - {fileID: 1977025405}
   - {fileID: 628969710}
+  - {fileID: 1704190408}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &811185088
@@ -3459,8 +3455,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0.5}
-    oldSize: {x: 1.625, y: 2.03125}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5, y: 2.09375}
     newSize: {x: 1.5, y: 2.09375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3517,8 +3513,8 @@ BoxCollider2D:
   m_Offset: {x: -0.22234318, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0.5}
-    oldSize: {x: 1.625, y: 2.03125}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5, y: 2.09375}
     newSize: {x: 1.5, y: 2.09375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3585,6 +3581,24 @@ CapsuleCollider2D:
   m_Offset: {x: -0.17767316, y: -1.04}
   m_Size: {x: 1.2015709, y: 0.51383585}
   m_Direction: 1
+--- !u!114 &811185094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811185084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db65962210aa5b94fbf52c276760abd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 8367163988273678461, guid: 937b79c1e000cc84289ad5b38d05213f, type: 3}
+  firePoint: {fileID: 1704190408}
+  bulletSpeed: 10
+  fireRate: 0.2
+  clipSize: 30
+  reloadTime: 1.5
 --- !u!1 &991013292
 GameObject:
   m_ObjectHideFlags: 0
@@ -7399,6 +7413,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 519420028}
   parallaxEffect: 1
+--- !u!1 &1704190407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1704190408}
+  m_Layer: 0
+  m_Name: firePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1704190408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704190407}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.23, y: 0.45, z: 1.3178359}
+  m_LocalScale: {x: 1.2429851, y: 1.2429851, z: 1.2429851}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 811185087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1705661667
 GameObject:
   m_ObjectHideFlags: 0
