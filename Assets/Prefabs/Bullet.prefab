@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7558754428931250139}
   - component: {fileID: 1881710626292676299}
   - component: {fileID: 1811957815603258168}
+  - component: {fileID: 6977132924321161740}
+  - component: {fileID: 1948845024581155657}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -78,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 1203314893
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1ff8d71f6d1a4809b4e35fac8d4a7df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5334a60396bca40f19ac9d531fab2621, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +103,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -181,3 +183,37 @@ PolygonCollider2D:
       - {x: 0.305, y: -0.099999994}
       - {x: 0.305, y: 0.03}
   m_UseDelaunayMesh: 0
+--- !u!95 &6977132924321161740
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367163988273678461}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39707ba99e5852d449ffcd3975a19932, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1948845024581155657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367163988273678461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657fd3767b241d54c83959d0b7b71159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
