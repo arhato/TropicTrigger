@@ -9,41 +9,31 @@ public class GunController : MonoBehaviour
     public float fireRate = 0.2f;
     public int clipSize = 30;
     public float reloadTime = 1.5f;
-    private float nextFireTime = 0f;
 
+    private float nextFireTime = 0f;
     private int currentAmmo;
-    private bool canFire = true;
-    private Animator animator;
     private bool isReloading = false;
-    private bool isShooting;
-    private bool isMouseHeld;
+
+    private Animator animator;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        currentAmmo = clipSize;
     }
-    void Update()
-    {
-        if (Time.timeScale == 0f) return;
 
-        isMouseHeld = Input.GetMouseButton(0);
-        animator.SetBool("isShooting", isMouseHeld);
-
-        if (Input.GetMouseButton(0) &&Time.time >= nextFireTime)
-        {
-            nextFireTime = Time.time + fireRate;
-            Shoot();
-        }
-    }
-    void Shoot()
+    // Call this from player or enemy script
+    public void Shoot()
     {
+        if (!CanShoot()) return;
+
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
         float direction = transform.localScale.x > 0 ? 1f : -1f;
         rb.linearVelocity = new Vector2(direction * bulletSpeed, 0f);
-        
+
+        // Flip bullet sprite if needed
         if (direction < 0)
         {
             Vector3 bulletScale = bullet.transform.localScale;
@@ -52,5 +42,29 @@ public class GunController : MonoBehaviour
         }
 
         Destroy(bullet, 2f);
+
+        nextFireTime = Time.time + fireRate;
+        currentAmmo--;
+
+        if (animator) animator.SetBool("isShooting", true);
+
+        if (currentAmmo <= 0)
+        {
+            StartCoroutine(Reload());
+        }
+    }
+
+    private bool CanShoot()
+    {
+        return Time.time >= nextFireTime && currentAmmo > 0 && !isReloading;
+    }
+
+    private IEnumerator Reload()
+    {
+        
+        isReloading = true;
+        yield return new WaitForSeconds(reloadTime);
+        currentAmmo = clipSize;
+        isReloading = false;
     }
 }

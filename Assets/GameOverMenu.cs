@@ -7,6 +7,7 @@ public class GameOverMenu : MonoBehaviour
     public float fallThreshold = -10f; 
     public GameObject player;
     public GameObject infoHUD;
+    
     void Start()
     {
         overMenu.SetActive(false);

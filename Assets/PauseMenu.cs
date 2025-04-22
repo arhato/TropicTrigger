@@ -6,6 +6,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject infoHUD;
     public static bool isPaused;
+    public GameObject[] blockingMenus;
+
     void Start()
     {
         pauseMenu.SetActive(false);
@@ -16,13 +18,16 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
+            if (!AnyMenuOpen())
             {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
+                if (isPaused)
+                {
+                    ResumeGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
             }
         }
     }
@@ -58,5 +63,14 @@ public class PauseMenu : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
         Application.Quit();
+    }
+    
+    bool AnyMenuOpen()
+    {
+        foreach (GameObject menu in blockingMenus)
+        {
+            if (menu.activeSelf) return true;
+        }
+        return false;
     }
 }

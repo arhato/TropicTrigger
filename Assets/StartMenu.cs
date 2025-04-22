@@ -19,6 +19,8 @@ public class StartMenu : MonoBehaviour
         infoHUD.SetActive(true);
         Time.timeScale = 1f; 
         PauseMenu.isPaused = false;
+        FindFirstObjectByType<PlayerMovement>().canControl = true;
+
     }
 
     public void QuitGame()
