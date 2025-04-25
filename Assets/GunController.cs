@@ -22,7 +22,6 @@ public class GunController : MonoBehaviour
         currentAmmo = clipSize;
     }
 
-    // Call this from player or enemy script
     public void Shoot()
     {
         if (!CanShoot()) return;
@@ -33,7 +32,6 @@ public class GunController : MonoBehaviour
         float direction = transform.localScale.x > 0 ? 1f : -1f;
         rb.linearVelocity = new Vector2(direction * bulletSpeed, 0f);
 
-        // Flip bullet sprite if needed
         if (direction < 0)
         {
             Vector3 bulletScale = bullet.transform.localScale;

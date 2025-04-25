@@ -5,8 +5,10 @@ public class PlayerMovement : CharacterMovement
     public float jumpForce = 15f;
     public GunController gun;
     public bool canControl = false;
-
+    
     private bool isGrounded;
+    private bool isCrouching = false;
+
     float horizontalInput;
 
     void Update()
@@ -14,26 +16,64 @@ public class PlayerMovement : CharacterMovement
         if (!canControl) return;
 
         horizontalInput = Input.GetAxis("Horizontal");
+        bool crouchInput = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.C);
+        bool shootInput = Input.GetMouseButtonDown(0);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching)
         {
             Jump();
         }
-
-        if (Input.GetMouseButton(0))
+        if (crouchInput && !isCrouching)
         {
-            gun.Shoot();
-            if (animator) animator.SetBool("isShooting", true);
+            Crouch();
         }
-        else
+        else if (!crouchInput && isCrouching)
         {
-            if (animator) animator.SetBool("isShooting", false);
+            StandUp();
+        }
+        
+        if (animator)
+        {
+            if (shootInput)
+            {
+                gun.Shoot();
+
+                if (isCrouching)
+                {
+                    animator.SetBool("isShooting", false);
+                    animator.SetBool("isCrouchShooting", true);
+                    animator.SetBool("isCrouching", true);
+                }
+                else
+                {
+                    animator.SetBool("isShooting", true);
+                    animator.SetBool("isCrouchShooting", false);
+                }
+
+            }
+            else
+            {
+                animator.SetBool("isShooting", false);
+                animator.SetBool("isCrouchShooting", false);
+            }
+            
         }
     }
 
     void FixedUpdate()
     {
-        Move(new Vector2(horizontalInput, 0));
+        if (!isCrouching)
+        {
+            Move(new Vector2(horizontalInput, 0));
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            if (animator)
+            {
+                animator.SetFloat("xVelocity", 0);
+            }
+        }
     }
 
     public void Jump()
@@ -42,7 +82,19 @@ public class PlayerMovement : CharacterMovement
         isGrounded = false;
         if (animator) animator.SetBool("isJumping", true);
     }
+    
+    public void Crouch()
+    {
+        isCrouching = true;
+        animator.SetBool("isCrouching", true);
+    }
 
+    public void StandUp()
+    {
+        isCrouching = false;
+        animator.SetBool("isCrouching", false);
+    }   
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isGrounded = true;
