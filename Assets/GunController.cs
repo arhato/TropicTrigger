@@ -4,7 +4,9 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public Transform firePoint;
+    private Transform firePoint;
+    public Transform standingFirePoint;
+    public Transform crouchingFirePoint;
     public float bulletSpeed = 10f;
     public float fireRate = 0.2f;
     public int clipSize = 30;
@@ -20,12 +22,13 @@ public class GunController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         currentAmmo = clipSize;
+        firePoint = standingFirePoint;
     }
 
     public void Shoot()
     {
         if (!CanShoot()) return;
-
+        
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
@@ -43,13 +46,14 @@ public class GunController : MonoBehaviour
 
         nextFireTime = Time.time + fireRate;
         currentAmmo--;
-
-        if (animator) animator.SetBool("isShooting", true);
-
+        
         if (currentAmmo <= 0)
         {
             StartCoroutine(Reload());
         }
+        
+        if (animator && !isReloading) animator.SetBool("isShooting", true);
+        
     }
 
     private bool CanShoot()
@@ -57,6 +61,10 @@ public class GunController : MonoBehaviour
         return Time.time >= nextFireTime && currentAmmo > 0 && !isReloading;
     }
 
+    public void SetCrouching(bool crouching)
+    {
+        firePoint = crouching ? crouchingFirePoint : standingFirePoint;
+    }
     private IEnumerator Reload()
     {
         

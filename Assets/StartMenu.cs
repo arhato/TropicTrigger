@@ -20,7 +20,6 @@ public class StartMenu : MonoBehaviour
         Time.timeScale = 1f; 
         PauseMenu.isPaused = false;
         FindFirstObjectByType<PlayerMovement>().canControl = true;
-
     }
 
     public void QuitGame()

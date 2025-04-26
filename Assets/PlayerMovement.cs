@@ -4,13 +4,15 @@ public class PlayerMovement : CharacterMovement
 {
     public float jumpForce = 15f;
     public GunController gun;
-    public bool canControl = false;
+    public bool canControl=false;
     
     private bool isGrounded;
     private bool isCrouching = false;
 
     float horizontalInput;
 
+    
+    
     void Update()
     {
         if (!canControl) return;
@@ -87,12 +89,14 @@ public class PlayerMovement : CharacterMovement
     {
         isCrouching = true;
         animator.SetBool("isCrouching", true);
+        gun.SetCrouching(true);
     }
 
     public void StandUp()
     {
         isCrouching = false;
         animator.SetBool("isCrouching", false);
+        gun.SetCrouching(false);
     }   
     
     private void OnTriggerEnter2D(Collider2D collision)

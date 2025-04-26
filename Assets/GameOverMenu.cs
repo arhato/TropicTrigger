@@ -25,6 +25,8 @@ public class GameOverMenu : MonoBehaviour
     {
         Time.timeScale = 0f;
         overMenu.SetActive(true);
+        FindFirstObjectByType<PlayerMovement>().canControl = false;
+
         
     }
     public void RestartGame()

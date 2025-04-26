@@ -837,6 +837,7 @@ GameObject:
   - component: {fileID: 100612989}
   - component: {fileID: 100612991}
   - component: {fileID: 100612990}
+  - component: {fileID: 100612992}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -917,6 +918,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f7c048beb242cd49a8210d85a981663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &100612992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100612985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe3d3ed483ca9949b3faf9d512bef38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &116702805
@@ -2805,7 +2818,6 @@ GameObject:
   - component: {fileID: 598261417}
   - component: {fileID: 598261412}
   - component: {fileID: 598261411}
-  - component: {fileID: 598261410}
   - component: {fileID: 598261409}
   - component: {fileID: 598261408}
   - component: {fileID: 598261407}
@@ -2850,8 +2862,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.17767316, y: -1.04}
-  m_Size: {x: 1.2015709, y: 0.51383585}
+  m_Offset: {x: 0.08994408, y: -1.04}
+  m_Size: {x: 1.1373453, y: 0.51383597}
   m_Direction: 1
 --- !u!95 &598261408
 Animator:
@@ -2909,76 +2921,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.22234318, y: 0}
+  m_Offset: {x: 0.043314755, y: 0.022418022}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 2.09375}
+    pivot: {x: 0.3, y: 0.5}
+    oldSize: {x: 1.5, y: 2.125}
     newSize: {x: 1.5, y: 2.09375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5112305, y: 2.09375}
+  m_Size: {x: 0.6192697, y: 2.1342945}
   m_EdgeRadius: 0
---- !u!60 &598261410
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598261406}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 2.09375}
-    newSize: {x: 1.5, y: 2.09375}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.03125, y: 1.046875}
-      - {x: -0.5, y: 1.046875}
-      - {x: -0.4869675, y: 0.6708269}
-      - {x: -0.68819207, y: 0.35242027}
-      - {x: -0.71502113, y: 0.1355749}
-      - {x: -0.57076114, y: 0.0025702417}
-      - {x: -0.53125, y: -1.046875}
-      - {x: 0.21875, y: -1.046875}
-      - {x: 0.25, y: -0.984375}
-      - {x: 0.0625, y: -0.859375}
-      - {x: 0.051809296, y: -0.28016338}
-  m_UseDelaunayMesh: 0
 --- !u!212 &598261411
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3074,7 +3028,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8367163988273678461, guid: 937b79c1e000cc84289ad5b38d05213f, type: 3}
-  firePoint: {fileID: 313801578}
+  standingFirePoint: {fileID: 313801578}
+  crouchingFirePoint: {fileID: 313801578}
   bulletSpeed: 6
   fireRate: 1
   clipSize: 30
@@ -3088,8 +3043,8 @@ Transform:
   m_GameObject: {fileID: 598261406}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.85, y: -1.53, z: -5.0417}
-  m_LocalScale: {x: 0.8045148, y: 0.8045148, z: 0.8045148}
+  m_LocalPosition: {x: 3.64, y: -1.83, z: -5.0417}
+  m_LocalScale: {x: -0.8045148, y: 0.8045148, z: 0.8045148}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 313801578}
@@ -4830,6 +4785,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160365883}
   m_CullTransparentMesh: 0
+--- !u!1 &1184177063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1184177064}
+  m_Layer: 0
+  m_Name: firePointSecond
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1184177064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184177063}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.63, y: -0.03, z: 1.317836}
+  m_LocalScale: {x: 0.99090016, y: 0.99090016, z: 0.99090016}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1489922894}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1256544001
 GameObject:
   m_ObjectHideFlags: 0
@@ -7709,7 +7695,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8367163988273678461, guid: 937b79c1e000cc84289ad5b38d05213f, type: 3}
-  firePoint: {fileID: 1357007574}
+  standingFirePoint: {fileID: 1357007574}
+  crouchingFirePoint: {fileID: 1184177064}
   bulletSpeed: 10
   fireRate: 0.15
   clipSize: 30
@@ -7762,6 +7749,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1357007574}
+  - {fileID: 1184177064}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1489922895

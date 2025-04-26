@@ -38,6 +38,8 @@ public class PauseMenu : MonoBehaviour
         infoHUD.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
+        
+        FindFirstObjectByType<PlayerMovement>().canControl = false;
     }
 
     public void ResumeGame()
@@ -46,6 +48,7 @@ public class PauseMenu : MonoBehaviour
         infoHUD.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
+        FindFirstObjectByType<PlayerMovement>().canControl = true;
     }
 
     public void RestartGame()
