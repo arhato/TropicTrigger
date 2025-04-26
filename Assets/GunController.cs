@@ -47,12 +47,18 @@ public class GunController : MonoBehaviour
         nextFireTime = Time.time + fireRate;
         currentAmmo--;
         
+        if (animator && !isReloading) 
+        {
+            animator.SetBool("isShooting", true);
+            StartCoroutine(ResetShootingAnimation());
+        }
+
+        
         if (currentAmmo <= 0)
         {
             StartCoroutine(Reload());
         }
         
-        if (animator && !isReloading) animator.SetBool("isShooting", true);
         
     }
 
@@ -67,10 +73,26 @@ public class GunController : MonoBehaviour
     }
     private IEnumerator Reload()
     {
-        
         isReloading = true;
+        if (animator) animator.SetBool("isShooting", false);
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = clipSize;
         isReloading = false;
+    }
+    
+    private IEnumerator ResetShootingAnimation()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (animator) animator.SetBool("isShooting", false);
+    }
+    
+    public int GetCurrentAmmo()
+    {
+        return currentAmmo;
+    }
+
+    public bool IsReloading()
+    {
+        return isReloading;
     }
 }

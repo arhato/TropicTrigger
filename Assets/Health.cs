@@ -18,16 +18,7 @@ public class Health : MonoBehaviour
         {
             healthBar.SetHealth(currentHealth, maxHealth);
         }
-        
         animator = GetComponent<Animator>();
-        if (animator == null)
-        {
-            Debug.LogError("No Animator found on " + gameObject.name);
-        }
-        else
-        {
-            Debug.Log("Animator found on " + gameObject.name);
-        }
     }
 
     void Update()
@@ -47,7 +38,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            
+            isDead=true;
             Die();
         }
         else
@@ -55,15 +46,14 @@ public class Health : MonoBehaviour
             if (animator != null)
             {
                 animator.SetTrigger("Hurt");
+                Invoke("ResetHurtTrigger", 0.1f);
             }
         }
     }
     
     void Die()
     {
-        isDead = true;
-        
-        if (animator != null)
+        if (animator !=null && !isPlayer)
         {
             animator.SetTrigger("Die");
         }
@@ -83,10 +73,13 @@ public class Health : MonoBehaviour
                 gameOverMenu.SetActive(true);
             }
         }
-        
         Invoke("DestroyObject", deathDelay);
     }
-    
+
+    void ResetHurtTrigger()
+    {
+        animator.ResetTrigger("Hurt");
+    }
     void DestroyObject()
     {
         Destroy(gameObject);
