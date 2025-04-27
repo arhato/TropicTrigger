@@ -11,7 +11,8 @@ public class GunController : MonoBehaviour
     public float fireRate = 0.2f;
     public int clipSize = 30;
     public float reloadTime = 1.5f;
-
+    public bool isEnemyGun = false;
+    
     private float nextFireTime = 0f;
     private int currentAmmo;
     private bool isReloading = false;
@@ -27,8 +28,25 @@ public class GunController : MonoBehaviour
 
     public void Shoot()
     {
-        if (!CanShoot()) return;
-        
+        if (isReloading || currentAmmo <= 0)
+        {
+            if (!isEnemyGun)
+            {
+                SoundEffectManager.Play("EmptyGun");
+            }
+            return;
+        }
+            
+        if (!CanShoot())
+        {
+            return;
+        }
+             
+        if (!isEnemyGun)
+        {
+            SoundEffectManager.Play("Shoot");
+        }
+            
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
@@ -46,20 +64,17 @@ public class GunController : MonoBehaviour
 
         nextFireTime = Time.time + fireRate;
         currentAmmo--;
-        
+            
         if (animator && !isReloading) 
         {
             animator.SetBool("isShooting", true);
             StartCoroutine(ResetShootingAnimation());
         }
-
-        
+            
         if (currentAmmo <= 0)
         {
             StartCoroutine(Reload());
         }
-        
-        
     }
 
     private bool CanShoot()
@@ -79,13 +94,13 @@ public class GunController : MonoBehaviour
         currentAmmo = clipSize;
         isReloading = false;
     }
-    
+        
     private IEnumerator ResetShootingAnimation()
     {
         yield return new WaitForSeconds(0.1f);
         if (animator) animator.SetBool("isShooting", false);
     }
-    
+        
     public int GetCurrentAmmo()
     {
         return currentAmmo;

@@ -6,7 +6,7 @@ public class CharacterMovement : MonoBehaviour
     protected Rigidbody2D rb;
     protected Animator animator;
     protected bool isFacingRight = true;
-
+    
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();

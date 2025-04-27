@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
     public Animator animator;
     public float deathDelay = 0f;
     bool isDead = false;
+    private Rigidbody2D rb;
+    
     void Start()
     {
         currentHealth = maxHealth;
@@ -19,6 +21,7 @@ public class Health : MonoBehaviour
             healthBar.SetHealth(currentHealth, maxHealth);
         }
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -53,11 +56,14 @@ public class Health : MonoBehaviour
     
     void Die()
     {
-        if (animator !=null && !isPlayer)
+        if (animator != null && !isPlayer)
         {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            animator.SetFloat("xVelocity",0);
+            animator.SetBool("isShooting", false);
             animator.SetTrigger("Die");
         }
-        
+
         if (isPlayer)
         {
             PlayerMovement playerMovement = GetComponent<PlayerMovement>();
@@ -65,7 +71,6 @@ public class Health : MonoBehaviour
             {
                 playerMovement.canControl = false;
             }
-            
            
             if (gameOverMenu != null)
             {

@@ -10,9 +10,16 @@ public class PlayerMovement : CharacterMovement
     private bool isCrouching = false;
 
     float horizontalInput;
+    
+    private float footstepTimer = 0f;
+    public float footstepInterval = 0.1f;
+    private bool wasMoving = false;
+    
+    void Start()
+    {
+        base.Start();
 
-    
-    
+    }
     void Update()
     {
         if (!canControl) return;
@@ -64,12 +71,33 @@ public class PlayerMovement : CharacterMovement
 
     void FixedUpdate()
     {
+       
         if (!isCrouching)
         {
             Move(new Vector2(horizontalInput, 0));
+            bool isMoving = Mathf.Abs(horizontalInput) > 0f && isGrounded;
+            if (isMoving)
+            {
+                if (!wasMoving)
+                {
+                    SoundEffectManager.Play("FootStep");
+                    footstepTimer = 0f;
+                }
+                else
+                {
+                    footstepTimer += Time.fixedDeltaTime;
+                    if (footstepTimer >= footstepInterval)
+                    {
+                        SoundEffectManager.Play("FootStep");
+                        footstepTimer = 0f;
+                    }
+                }
+            } 
+            wasMoving = isMoving;   
         }
         else
         {
+            
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             if (animator)
             {
@@ -83,6 +111,8 @@ public class PlayerMovement : CharacterMovement
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         isGrounded = false;
         if (animator) animator.SetBool("isJumping", true);
+        SoundEffectManager.Play("Jump"); 
+
     }
     
     public void Crouch()
@@ -90,18 +120,27 @@ public class PlayerMovement : CharacterMovement
         isCrouching = true;
         animator.SetBool("isCrouching", true);
         gun.SetCrouching(true);
+        SoundEffectManager.Play("Crouch");
     }
 
     public void StandUp()
     {
         isCrouching = false;
+        SoundEffectManager.Play("Cloth");
         animator.SetBool("isCrouching", false);
+        SoundEffectManager.Play("Crouch");
         gun.SetCrouching(false);
     }   
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!isGrounded)
+        {
+            SoundEffectManager.Play("Landing");
+        }
         isGrounded = true;
         if (animator) animator.SetBool("isJumping", false);
     }
+    
+  
 }

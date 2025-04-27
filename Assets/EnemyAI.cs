@@ -23,7 +23,7 @@
             
             float distance = Vector2.Distance(transform.position, player.position);
             Vector2 dir = player.position.x < transform.position.x ? Vector2.left : Vector2.right;
-            transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
+            transform.localScale = new Vector3(Mathf.Sign(dir.x) * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             
             if (distance < shootingRange)
             {
