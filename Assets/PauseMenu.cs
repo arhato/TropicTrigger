@@ -60,6 +60,10 @@ public class PauseMenu : MonoBehaviour
 
     }
 
+    public void TutorialLevel(){
+        SceneManager.LoadScene("IntroLevel");
+    }
+    
     public void QuitGame()
     {
         #if UNITY_EDITOR

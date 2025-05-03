@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ChinookHel.vox-0_0: 5801235823201168431
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

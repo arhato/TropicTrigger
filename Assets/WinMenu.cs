@@ -39,6 +39,10 @@ public class WinMenu : MonoBehaviour
         SceneManager.LoadScene(currentSceneName);
     }
     
+    public void NextLevel(){
+        SceneManager.LoadScene("LevelOne");
+    }
+
     public void QuitGame()  
     {
 #if UNITY_EDITOR

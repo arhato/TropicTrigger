@@ -36,7 +36,10 @@ public class GameOverMenu : MonoBehaviour
         SceneManager.LoadScene(currentSceneName);
     }
 
-
+    public void TutorialLevel(){
+        SceneManager.LoadScene("IntroLevel");
+    }
+    
     public void QuitGame()
     {
 #if UNITY_EDITOR
