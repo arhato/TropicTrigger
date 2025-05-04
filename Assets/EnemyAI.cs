@@ -7,6 +7,8 @@ public class EnemyAI : CharacterMovement
     [SerializeField] private float shootingRange = 8f;
     public GunController gun;
     private float fallThreshold = -10f;
+    public float damageCooldown = 1f;
+    private float lastDamageTime = -999f;
 
     protected override void Start()
     {
@@ -40,6 +42,20 @@ public class EnemyAI : CharacterMovement
         {
             animator.SetBool("isShooting", false);
             animator.SetFloat("xVelocity", 0f);
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!CompareTag("Enemy")) return;
+        if (collision.CompareTag("Player") && Time.time - lastDamageTime > damageCooldown)
+        {
+            Health playerHealth = collision.GetComponent<Health>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(1);
+                lastDamageTime = Time.time;
+            }
         }
     }
 }

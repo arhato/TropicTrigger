@@ -7,6 +7,7 @@ public class ProjectileManager : MonoBehaviour
      private PolygonCollider2D collider;
      private Animator animator;
      private Rigidbody2D rb;
+     
     void Start()
     {
         animator = GetComponent<Animator>();

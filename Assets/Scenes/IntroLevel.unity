@@ -1824,6 +1824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7316369043623117896, guid: 9f9d52d371fd42542b84336e76028dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11066,6 +11070,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6145775029367686465, guid: 96ba22dcf45fb8b4c8524ed9e414ecc1, type: 3}
+      propertyPath: audioGroups.Array.data[2].audioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145775029367686465, guid: 96ba22dcf45fb8b4c8524ed9e414ecc1, type: 3}
+      propertyPath: 'audioGroups.Array.data[2].audioClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 84b8448cb9bf0324ca2611d5920eeb00, type: 3}
     - target: {fileID: 6725788810508533712, guid: 96ba22dcf45fb8b4c8524ed9e414ecc1, type: 3}
       propertyPath: m_Name
       value: AudioManager
