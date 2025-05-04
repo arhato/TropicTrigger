@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     public GameObject gameOverMenu; 
     public GameObject infoHUD;
     public Animator animator;
-    public float deathDelay = 0f;
+    public float deathDelay = 0.25f;
     bool isDead = false;
     private Rigidbody2D rb;
     
@@ -46,7 +46,7 @@ public class Health : MonoBehaviour
             {
                 CancelInvoke("ResetHurtTrigger");
                 animator.SetTrigger("Hurt");
-                SoundEffectManager.Play("Hurt");
+                if (isPlayer) SoundEffectManager.Play("Hurt");
                 Invoke("ResetHurtTrigger", 0.2f);
                 
             }
@@ -55,15 +55,26 @@ public class Health : MonoBehaviour
     
     void Die()
     {
-        if (animator != null && !isPlayer)
+        if (!isPlayer)
         {
+            EnemyAI enemyAI = GetComponent<EnemyAI>();
+            if (enemyAI != null)
+            {
+                enemyAI.enabled = false;
+            }
+            GunController gun = GetComponent<GunController>();
+            if (gun != null)
+            {
+                gun.enabled = false;
+            }
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             animator.SetFloat("xVelocity",0);
             animator.SetBool("isShooting", false);
+            animator.ResetTrigger("Hurt");
             animator.SetTrigger("Die");
+            SoundEffectManager.Play("EnemyDeath");
         }
-
-        if (isPlayer)
+        else
         {
             PlayerMovement playerMovement = GetComponent<PlayerMovement>();
             if (playerMovement != null)
@@ -76,6 +87,7 @@ public class Health : MonoBehaviour
                 infoHUD.SetActive(false);
                 gameOverMenu.SetActive(true);
             }
+            SoundEffectManager.Play("Death");
         }
         Invoke("DestroyObject", deathDelay);
     }

@@ -16,11 +16,12 @@
         private bool wasMoving = false;
         public LayerMask groundLayer; 
         public float groundCheckDistance = 0.3f;
+        
         void Start()
         {
             base.Start();
-
         }
+        
         void Update()
         {
             CheckGrounded();

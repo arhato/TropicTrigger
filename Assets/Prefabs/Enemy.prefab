@@ -88,7 +88,7 @@ MonoBehaviour:
   gameOverMenu: {fileID: 0}
   infoHUD: {fileID: 0}
   animator: {fileID: 0}
-  deathDelay: 0
+  deathDelay: 0.25
 --- !u!114 &7677778115000218912
 MonoBehaviour:
   m_ObjectHideFlags: 0

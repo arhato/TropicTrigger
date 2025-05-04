@@ -38,7 +38,6 @@ public class PauseMenu : MonoBehaviour
         infoHUD.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
-        
         FindFirstObjectByType<PlayerMovement>().canControl = false;
     }
 
@@ -53,16 +52,21 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
+        StartMenu.IsRestarting = true;
         Time.timeScale = 1f;
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
         isPaused = false;
-
     }
 
     public void TutorialLevel(){
         SceneManager.LoadScene("IntroLevel");
-    }
+    }   
+    
+    public void SkipTutorial(){
+        StartMenu.IsRestarting = true;
+        SceneManager.LoadScene("LevelOne");
+    }  
     
     public void QuitGame()
     {

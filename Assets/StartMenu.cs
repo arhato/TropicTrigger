@@ -5,12 +5,21 @@ public class StartMenu : MonoBehaviour
 {
     public GameObject startMenu; 
     public GameObject infoHUD;
+    public static bool IsRestarting = false;
 
     void Start()
     {
-        Time.timeScale = 0f; 
-        startMenu.SetActive(true);
-        infoHUD.SetActive(false);
+        if (IsRestarting)
+        {
+            IsRestarting = false;
+            StartGame();
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            startMenu.SetActive(true);
+            infoHUD.SetActive(false);
+        }
     }
 
     public void StartGame()
@@ -21,7 +30,12 @@ public class StartMenu : MonoBehaviour
         PauseMenu.isPaused = false;
         FindFirstObjectByType<PlayerMovement>().canControl = true;
     }
-
+    
+    public void SkipTutorial(){
+        IsRestarting = true;
+        SceneManager.LoadScene("LevelOne");
+    }  
+    
     public void QuitGame()
     {
 #if UNITY_EDITOR

@@ -10,11 +10,7 @@ public class WinMenu : MonoBehaviour
     {
         winMenu.SetActive(false);
     }
-
-    void Update()
-    {
-        
-    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Triggered by: " + other.name);
@@ -34,12 +30,14 @@ public class WinMenu : MonoBehaviour
     }
     public void RestartGame()
     {
+        StartMenu.IsRestarting = true;
         Time.timeScale = 1f;
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
     
     public void NextLevel(){
+        Time.timeScale = 1f;
         SceneManager.LoadScene("LevelOne");
     }
 

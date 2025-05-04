@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6353426700183127311}
   - component: {fileID: 2479115787934583926}
   - component: {fileID: 2266660818006687581}
-  - component: {fileID: 3303844927758135364}
   - component: {fileID: 3914227851869753278}
   m_Layer: 0
   m_Name: Player (1)
@@ -34,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.1817, y: -1.7873, z: -5.0417}
-  m_LocalScale: {x: 1.0091834, y: 1.0091834, z: 1.0091834}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2162632447264359489}
@@ -58,6 +57,10 @@ MonoBehaviour:
   gun: {fileID: 5777557084876661986}
   canControl: 0
   footstepInterval: 0.4
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckDistance: 0.3
 --- !u!114 &8525312011716425163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,43 +227,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.62623894, y: 1.5524547}
   m_EdgeRadius: 0
---- !u!70 &3303844927758135364
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056623225368055218}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.15555628, y: -0.87191135}
-  m_Size: {x: 0.96270996, y: 0.54922265}
-  m_Direction: 1
 --- !u!95 &3914227851869753278
 Animator:
   serializedVersion: 7
