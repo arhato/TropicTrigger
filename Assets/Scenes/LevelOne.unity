@@ -406,6 +406,9 @@ MonoBehaviour:
   - name: EmptyGun
     audioClips:
     - {fileID: 8300000, guid: 3e68265e6c65b33419511ff0a806471d, type: 3}
+  - name: Hurt
+    audioClips:
+    - {fileID: 8300000, guid: a69996325a5db8b4c83206978a765c13, type: 3}
 --- !u!82 &51725696
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2456,7 +2459,7 @@ GameObject:
   - component: {fileID: 1274604175}
   m_Layer: 6
   m_Name: Platforms
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6900,6 +6903,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2454294993253166500, guid: 1a8fbaf32a10b8e42bef2adfcb408f5e, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6105636932521475862, guid: 1a8fbaf32a10b8e42bef2adfcb408f5e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.1817
@@ -7003,7 +7010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150}
+  m_AnchoredPosition: {x: 0, y: -69}
   m_SizeDelta: {x: 250, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1497858377641147720
@@ -10548,7 +10555,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tutorial Finished
+  m_text: You Won
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ff94438b2c627da4bb327b4e29015112, type: 2}
   m_sharedMaterial: {fileID: 1755590568415095086, guid: ff94438b2c627da4bb327b4e29015112, type: 2}

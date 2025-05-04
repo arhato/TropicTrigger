@@ -30,7 +30,7 @@
             bool crouchInput = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.C);
             bool shootInput = Input.GetMouseButtonDown(0);
 
-            if ((Input.GetButtonDown("Jump") ) && isGrounded && !isCrouching)
+            if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)||Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded && !isCrouching)
             {
                 Jump();
             }

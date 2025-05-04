@@ -23,11 +23,7 @@ public class Health : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
-
-    void Update()
-    {
-        
-    }
+    
 
     public void TakeDamage(float damage)
     {
@@ -48,8 +44,11 @@ public class Health : MonoBehaviour
         {
             if (animator != null)
             {
+                CancelInvoke("ResetHurtTrigger");
                 animator.SetTrigger("Hurt");
-                Invoke("ResetHurtTrigger", 0.1f);
+                SoundEffectManager.Play("Hurt");
+                Invoke("ResetHurtTrigger", 0.2f);
+                
             }
         }
     }
