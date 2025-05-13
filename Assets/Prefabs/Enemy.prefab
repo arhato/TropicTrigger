@@ -106,7 +106,7 @@ MonoBehaviour:
   standingFirePoint: {fileID: 9085621984998929126}
   crouchingFirePoint: {fileID: 9085621984998929126}
   bulletSpeed: 6
-  fireRate: 1
+  fireRate: 0.6
   clipSize: 30
   reloadTime: 1.5
   isEnemyGun: 1

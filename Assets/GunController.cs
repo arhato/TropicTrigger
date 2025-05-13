@@ -48,6 +48,11 @@ public class GunController : MonoBehaviour
         }
             
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        ProjectileManager projectile= bullet.GetComponent<ProjectileManager>();
+        if (projectile != null)
+        {
+            projectile.sourceTag=isEnemyGun ? "Enemy" : "Player";
+        }
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
         float direction = transform.localScale.x > 0 ? 1f : -1f;

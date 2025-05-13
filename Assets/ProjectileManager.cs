@@ -7,7 +7,8 @@ public class ProjectileManager : MonoBehaviour
      private PolygonCollider2D collider;
      private Animator animator;
      private Rigidbody2D rb;
-     
+
+     public string sourceTag = "Player";
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -21,6 +22,10 @@ public class ProjectileManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag(sourceTag))
+        {
+            return;
+        }
         Debug.Log("Bullet hit:"+other.gameObject.name);
         
         Health health = other.GetComponent<Health>();

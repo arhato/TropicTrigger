@@ -45,6 +45,15 @@ public class EnemyAI : CharacterMovement
         }
     }
     
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, shootingRange);
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!CompareTag("Enemy")) return;
